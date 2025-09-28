@@ -1257,4 +1257,632 @@ footer {
   transform: none !important;
 }
 
+/* =====================================================
+   INNOVATIVE SPLIT-SCREEN ABOUT SECTION
+   ===================================================== */
+
+/* Revolutionary Container */
+.about-innovative-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left Side: Dynamic Brand Story */
+.story-side {
+  flex: 1;
+  background: linear-gradient(135deg, 
+    rgba(13, 27, 42, 0.95) 0%, 
+    rgba(245, 124, 0, 0.1) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 60px 40px;
+}
+
+.story-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Morphing Shapes Animation */
+.morphing-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    rgba(245, 124, 0, 0.1) 0%, 
+    rgba(245, 124, 0, 0.05) 100%);
+  animation: morphFloat 8s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  left: 60%;
+  animation-delay: 4s;
+}
+
+@keyframes morphFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg) scale(1);
+    border-radius: 50%; 
+  }
+  33% { 
+    transform: translateY(-30px) rotate(120deg) scale(1.1);
+    border-radius: 60% 40% 30% 70%; 
+  }
+  66% { 
+    transform: translateY(20px) rotate(240deg) scale(0.9);
+    border-radius: 30% 60% 70% 40%; 
+  }
+}
+
+/* Story Content */
+.story-content {
+  position: relative;
+  z-index: 10;
+  max-width: 600px;
+}
+
+.story-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(245, 124, 0, 0.15);
+  border: 1px solid rgba(245, 124, 0, 0.3);
+  border-radius: 50px;
+  padding: 0.8rem 2rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.badge-text {
+  color: #F57C00;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.badge-pulse {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(245, 124, 0, 0.3) 50%, 
+    transparent 100%);
+  animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Dynamic Title */
+.story-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.title-word {
+  color: #EAEAEA;
+  position: relative;
+  animation: wordSlideIn 1s ease-out both;
+}
+
+.title-word.highlight {
+  color: #F57C00;
+  text-shadow: 0 0 30px rgba(245, 124, 0, 0.4);
+  position: relative;
+}
+
+.title-word.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #F57C00 0%, transparent 100%);
+  border-radius: 2px;
+  animation: underlineGrow 1s ease-out 0.5s both;
+}
+
+.title-word:nth-child(1) { animation-delay: 0.1s; }
+.title-word:nth-child(2) { animation-delay: 0.2s; }
+.title-word:nth-child(3) { animation-delay: 0.3s; }
+.title-word:nth-child(4) { animation-delay: 0.4s; }
+.title-word:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes wordSlideIn {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes underlineGrow {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* Story Description */
+.story-description {
+  color: #EAEAEA;
+}
+
+.story-text {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+/* Animated Metrics */
+.story-metrics {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.metric {
+  text-align: center;
+}
+
+.metric-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #F57C00;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #EAEAEA;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+/* Right Side: Interactive Philosophy Wheel */
+.philosophy-side {
+  flex: 1;
+  background: linear-gradient(135deg, 
+    rgba(15, 30, 50, 0.95) 0%, 
+    rgba(245, 124, 0, 0.05) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  position: relative;
+}
+
+.philosophy-modern-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Modern Brand Identity Center */
+.brand-identity-center {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.brand-logo-modern {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-hexagon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #F57C00 0%, rgba(245, 124, 0, 0.8) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  transition: all 0.4s ease;
+}
+
+.logo-hexagon:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 20px 40px rgba(245, 124, 0, 0.4);
+}
+
+.logo-text-modern {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.brand-tagline {
+  color: #F57C00;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Modern Philosophy Cards */
+.philosophy-cards-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.modern-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(245, 124, 0, 0.15);
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-card:hover {
+  transform: translateX(10px);
+  background: rgba(245, 124, 0, 0.08);
+  border-color: rgba(245, 124, 0, 0.4);
+  box-shadow: -5px 10px 30px rgba(245, 124, 0, 0.2);
+}
+
+.card-header-modern {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-icon-modern {
+  font-size: 2rem;
+  filter: drop-shadow(0 4px 8px rgba(245, 124, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.modern-card:hover .card-icon-modern {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.card-title-modern {
+  color: #F57C00;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card-content-modern {
+  position: relative;
+}
+
+.card-description-modern {
+  color: #EAEAEA;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.card-highlight {
+  color: #F57C00;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.card-accent-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #F57C00 0%, transparent 100%);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.modern-card:hover .card-accent-line {
+  opacity: 1;
+}
+
+/* Values Grid for Values Card */
+.values-modern-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.value-item-modern {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  background: rgba(245, 124, 0, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(245, 124, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.value-item-modern:hover {
+  background: rgba(245, 124, 0, 0.1);
+  border-color: rgba(245, 124, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.value-icon-modern {
+  font-size: 1.2rem;
+}
+
+.value-text-modern {
+  color: #EAEAEA;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Card Animation Stagger */
+.mission-modern {
+  animation-delay: 0.1s;
+}
+
+.vision-modern {
+  animation-delay: 0.2s;
+}
+
+.values-modern {
+  animation-delay: 0.3s;
+}
+
+/* Responsive card adjustments */
+.modern-card {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: cardSlideIn 0.8s ease-out both;
+}
+
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Innovative Quote Section */
+.philosophy-quote-section {
+  background: linear-gradient(135deg, 
+    rgba(10, 20, 35, 0.95) 0%, 
+    rgba(245, 124, 0, 0.1) 100%);
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.quote-track {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.quote-slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s ease;
+  text-align: center;
+}
+
+.quote-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.quote-mark {
+  font-size: 4rem;
+  color: rgba(245, 124, 0, 0.3);
+  font-family: serif;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.quote-slide blockquote {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #EAEAEA;
+  line-height: 1.4;
+  margin: 0 0 2rem 0;
+  font-style: italic;
+}
+
+.quote-slide cite {
+  color: #F57C00;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.quote-slide cite::before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 2px;
+  background: #F57C00;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+
+.quote-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(245, 124, 0, 0.3);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #F57C00;
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(245, 124, 0, 0.5);
+}
+
+/* Responsive Design for Innovative About Section */
+@media (max-width: 1200px) {
+  .philosophy-modern-container {
+    max-width: 500px;
+  }
+  
+  .logo-hexagon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .logo-text-modern {
+    font-size: 1.6rem;
+  }
+  
+  .modern-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-innovative-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .story-side, .philosophy-side {
+    flex: none;
+    padding: 40px 20px;
+  }
+  
+  .story-title {
+    font-size: 2.5rem;
+  }
+  
+  .story-metrics {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .philosophy-modern-container {
+    max-width: 100%;
+    gap: 2rem;
+  }
+  
+  .logo-hexagon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .logo-text-modern {
+    font-size: 1.4rem;
+  }
+  
+  .modern-card {
+    padding: 1.5rem;
+  }
+  
+  .modern-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .values-modern-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .card-header-modern {
+    gap: 0.8rem;
+  }
+  
+  .card-icon-modern {
+    font-size: 1.8rem;
+  }
+  
+  .quote-slide blockquote {
+    font-size: 1.4rem;
+  }
+  
+  .philosophy-quote-section {
+    padding: 60px 15px;
+  }
+}
+
+
+
 

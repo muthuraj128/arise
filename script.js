@@ -170,79 +170,229 @@ function initHeroAnimations() {
   }, 100);
   
   // About section interactions
-  initAboutAnimations();
+  initInnovativeAboutAnimations();
 }
 
-// About Section Animation System
-function initAboutAnimations() {
-  const philosophyCards = document.querySelectorAll('.philosophy-card');
-  const valueItems = document.querySelectorAll('.value-item');
+// Innovative About Section Animation System
+function initInnovativeAboutAnimations() {
+  // Animated Counter for Metrics
+  const metricNumbers = document.querySelectorAll('.metric-number');
   
-  // Philosophy card hover effects
-  philosophyCards.forEach(card => {
+  const animateCounter = (element) => {
+    const target = parseInt(element.getAttribute('data-count'));
+    const duration = 2000;
+    const start = performance.now();
+    
+    const updateCounter = (currentTime) => {
+      const elapsed = currentTime - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.floor(progress * target);
+      
+      element.textContent = current;
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      }
+    };
+    
+    requestAnimationFrame(updateCounter);
+  };
+  
+  // Interactive Modern Philosophy Cards
+  const modernCards = document.querySelectorAll('.modern-card');
+  const logoHexagon = document.querySelector('.logo-hexagon');
+  
+  modernCards.forEach(card => {
     card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-15px) scale(1.02)';
+      const cardType = this.getAttribute('data-card');
+      
+      // Animate the hexagon logo based on card type
+      if (logoHexagon) {
+        switch(cardType) {
+          case 'mission':
+            logoHexagon.style.transform = 'scale(1.1) rotate(120deg)';
+            logoHexagon.style.background = 'linear-gradient(135deg, #F57C00 0%, #FF9800 100%)';
+            break;
+          case 'vision':
+            logoHexagon.style.transform = 'scale(1.1) rotate(240deg)';
+            logoHexagon.style.background = 'linear-gradient(135deg, #F57C00 0%, #FF5722 100%)';
+            break;
+          case 'values':
+            logoHexagon.style.transform = 'scale(1.1) rotate(360deg)';
+            logoHexagon.style.background = 'linear-gradient(135deg, #F57C00 0%, #FFC107 100%)';
+            break;
+        }
+        logoHexagon.style.boxShadow = '0 20px 40px rgba(245, 124, 0, 0.4)';
+      }
+      
+      // Add ripple effect
+      this.style.position = 'relative';
+      this.style.overflow = 'hidden';
+      
+      // Create ripple element
+      const ripple = document.createElement('div');
+      ripple.style.position = 'absolute';
+      ripple.style.width = '20px';
+      ripple.style.height = '20px';
+      ripple.style.background = 'rgba(245, 124, 0, 0.3)';
+      ripple.style.borderRadius = '50%';
+      ripple.style.top = '50%';
+      ripple.style.left = '0';
+      ripple.style.transform = 'translate(-50%, -50%)';
+      ripple.style.animation = 'rippleExpand 0.6s ease-out';
+      ripple.style.pointerEvents = 'none';
+      
+      this.appendChild(ripple);
+      
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 600);
     });
     
     card.addEventListener('mouseleave', function() {
-      this.style.transform = '';
-    });
-    
-    // 3D tilt effect
-    card.addEventListener('mousemove', function(e) {
-      const rect = this.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = (y - centerY) / 15;
-      const rotateY = (centerX - x) / 15;
-      
-      this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-    });
-    
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-    });
-  });
-  
-  // Value items interaction
-  valueItems.forEach(item => {
-    item.addEventListener('mouseenter', function() {
-      const icon = this.querySelector('.value-icon');
-      if (icon) {
-        icon.style.transform = 'scale(1.1) rotate(5deg)';
-        icon.style.background = 'rgba(245, 124, 0, 0.4)';
-      }
-    });
-    
-    item.addEventListener('mouseleave', function() {
-      const icon = this.querySelector('.value-icon');
-      if (icon) {
-        icon.style.transform = '';
-        icon.style.background = 'rgba(245, 124, 0, 0.2)';
+      // Reset hexagon logo
+      if (logoHexagon) {
+        logoHexagon.style.transform = '';
+        logoHexagon.style.background = 'linear-gradient(135deg, #F57C00 0%, rgba(245, 124, 0, 0.8) 100%)';
+        logoHexagon.style.boxShadow = '';
       }
     });
   });
   
-  // Intersection Observer for scroll animations
+  // Add CSS for ripple animation
+  const rippleStyles = `
+    @keyframes rippleExpand {
+      0% {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+      }
+      100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+      }
+    }
+  `;
+  
+  const rippleStyleSheet = document.createElement('style');
+  rippleStyleSheet.textContent = rippleStyles;
+  document.head.appendChild(rippleStyleSheet);
+  
+  // Quote Slider Functionality
+  const quoteSlides = document.querySelectorAll('.quote-slide');
+  const indicators = document.querySelectorAll('.indicator');
+  let currentSlide = 0;
+  
+  const showSlide = (index) => {
+    quoteSlides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+    
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle('active', i === index);
+    });
+  };
+  
+  const nextSlide = () => {
+    currentSlide = (currentSlide + 1) % quoteSlides.length;
+    showSlide(currentSlide);
+  };
+  
+  // Auto-rotate quotes
+  let quoteInterval = setInterval(nextSlide, 4000);
+  
+  // Manual navigation
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      currentSlide = index;
+      showSlide(currentSlide);
+      
+      // Reset auto-rotation
+      clearInterval(quoteInterval);
+      quoteInterval = setInterval(nextSlide, 4000);
+    });
+  });
+  
+  // Parallax Effects
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const aboutSection = document.getElementById('about');
+    
+    if (aboutSection) {
+      const aboutTop = aboutSection.offsetTop;
+      const aboutHeight = aboutSection.offsetHeight;
+      const windowHeight = window.innerHeight;
+      
+      if (scrolled > aboutTop - windowHeight && scrolled < aboutTop + aboutHeight) {
+        const scrollProgress = (scrolled - aboutTop + windowHeight) / (aboutHeight + windowHeight);
+        
+        // Parallax for morphing shapes
+        const shapes = document.querySelectorAll('.shape');
+        shapes.forEach((shape, index) => {
+          const speed = 0.3 + (index * 0.1);
+          const yOffset = scrollProgress * 50 * speed;
+          shape.style.transform += ` translateY(${yOffset}px)`;
+        });
+        
+        // Animate hexagon logo based on scroll
+        const logoHexagon = document.querySelector('.logo-hexagon');
+        if (logoHexagon) {
+          const rotation = scrollProgress * 180;
+          logoHexagon.style.transform = `rotate(${rotation}deg)`;
+        }
+      }
+    }
+  });
+  
+  // Intersection Observer for animations
   const observerOptions = {
-    threshold: 0.1,
+    threshold: 0.3,
     rootMargin: '0px 0px -100px 0px'
   };
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        // Animate metrics when visible
+        if (entry.target.classList.contains('story-metrics')) {
+          metricNumbers.forEach(metric => {
+            animateCounter(metric);
+          });
+        }
+        
+        // Trigger other animations
         entry.target.style.animationPlayState = 'running';
+        entry.target.classList.add('animate-in');
       }
     });
   }, observerOptions);
   
   // Observe elements for scroll animations
-  document.querySelectorAll('.philosophy-card, .title-line, .about-intro').forEach(el => {
+  document.querySelectorAll('.story-content, .story-metrics, .philosophy-wheel-container, .quote-container').forEach(el => {
     observer.observe(el);
+  });
+  
+  // Enhanced mouse tracking for 3D effects
+  document.addEventListener('mousemove', (e) => {
+    const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    
+    // Central logo tilt effect
+    const logoCore = document.querySelector('.logo-core');
+    if (logoCore) {
+      logoCore.style.transform += ` perspective(1000px) rotateY(${mouseX * 5}deg) rotateX(${mouseY * -5}deg)`;
+    }
+    
+    // Morphing shapes parallax
+    const shapes = document.querySelectorAll('.shape');
+    shapes.forEach((shape, index) => {
+      const speed = 0.5 + (index * 0.2);
+      const x = mouseX * 10 * speed;
+      const y = mouseY * 10 * speed;
+      shape.style.transform += ` translate(${x}px, ${y}px)`;
+    });
   });
 }
