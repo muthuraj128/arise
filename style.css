@@ -392,42 +392,196 @@ footer {
   color: #EAEAEA;
 }
 
-/* Navigation Bar */
-.navbar {
+/* Floating Navigation System */
+.floating-navbar {
   position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #0D1B2A;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  gap: 2rem;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.logo {
-  font-size: 1.5rem;
+/* Animated Logo Orb */
+.logo-orb {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  background: conic-gradient(from 0deg, #F57C00, #FF9800, #F57C00);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: orbRotate 8s linear infinite;
+  box-shadow: 0 8px 25px rgba(245, 124, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.logo-orb::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: radial-gradient(circle, #0D1B2A, #1B263B);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.logo-orb:hover {
+  transform: scale(1.1) rotate(180deg);
+  box-shadow: 0 12px 35px rgba(245, 124, 0, 0.6);
+}
+
+@keyframes orbRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.logo-text {
+  position: relative;
+  z-index: 2;
+  font-size: 1.1rem;
   font-weight: bold;
   color: #F57C00;
   font-family: 'Brush Script MT', cursive;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
-.nav-links {
+/* Floating Navigation Pills */
+.nav-pills {
   list-style: none;
   display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.6rem 1.2rem;
+  background: rgba(13, 27, 42, 0.85);
+  backdrop-filter: blur(15px);
+  border-radius: 50px;
+  border: 1px solid rgba(245, 124, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-pills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245, 124, 0, 0.1), transparent);
+  animation: pillShimmer 4s ease-in-out infinite;
+}
+
+@keyframes pillShimmer {
+  0%, 100% { left: -100%; }
+  50% { left: 100%; }
+}
+
+.nav-pills li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.7rem 1rem;
+  border-radius: 25px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+}
+
+.nav-pills li a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, #F57C00 30%, #FF9800 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.nav-pills li a:hover::before {
+  width: 140%;
+  height: 200%;
+}
+
+.nav-pills li a:hover {
+  color: white;
+  transform: translateY(-2px) scale(1.05);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.nav-pills li a.active {
+  background: linear-gradient(135deg, #F57C00, #FF9800);
+  color: white;
+  box-shadow: 0 4px 15px rgba(245, 124, 0, 0.4);
+  animation: activePulse 2s ease-in-out infinite;
+}
+
+@keyframes activePulse {
+  0%, 100% { box-shadow: 0 4px 15px rgba(245, 124, 0, 0.4); }
+  50% { box-shadow: 0 6px 20px rgba(245, 124, 0, 0.6); }
+}
+
+/* Scroll Effects */
+.floating-navbar.scrolled {
+  top: 15px;
   gap: 1.5rem;
 }
 
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+.floating-navbar.scrolled .logo-orb {
+  width: 45px;
+  height: 45px;
 }
 
-.nav-links li a:hover {
-  color: #F57C00;
+.floating-navbar.scrolled .logo-text {
+  font-size: 1rem;
+}
+
+.floating-navbar.scrolled .nav-pills {
+  padding: 0.4rem 1rem;
+}
+
+.floating-navbar.scrolled .nav-pills li a {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .floating-navbar {
+    top: 15px;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-pills {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.8rem;
+  }
+  
+  .nav-pills li a {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .logo-orb {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 
