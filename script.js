@@ -396,3 +396,143 @@ function initInnovativeAboutAnimations() {
     });
   });
 }
+
+// Modern Services Section Interactions
+document.addEventListener('DOMContentLoaded', function() {
+  // Services Cards Interactive Effects
+  const serviceCards = document.querySelectorAll('.service-card-modern');
+  
+  serviceCards.forEach(card => {
+    // Ripple effect on click
+    card.addEventListener('click', function(e) {
+      const rect = this.getBoundingClientRect();
+      const ripple = document.createElement('div');
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}px;
+        top: ${y}px;
+        background: radial-gradient(circle, rgba(245, 124, 0, 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: serviceRipple 0.6s ease-out;
+        pointer-events: none;
+        z-index: 1000;
+      `;
+      
+      this.appendChild(ripple);
+      
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 600);
+    });
+    
+    // Parallax effect for service patterns
+    card.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      
+      const pattern = this.querySelector('.service-pattern');
+      if (pattern) {
+        const moveX = (x - 0.5) * 20;
+        const moveY = (y - 0.5) * 20;
+        pattern.style.transform = `translate(${moveX}px, ${moveY}px) rotate(2deg)`;
+      }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      const pattern = this.querySelector('.service-pattern');
+      if (pattern) {
+        pattern.style.transform = 'translate(0, 0) rotate(0deg)';
+      }
+    });
+  });
+  
+  // Timeline Items Animation Observer
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        
+        // Add counter animation to timeline markers
+        const marker = entry.target.querySelector('.timeline-marker');
+        if (marker) {
+          const step = entry.target.getAttribute('data-step');
+          if (step) {
+            let count = 0;
+            const target = parseInt(step);
+            const counter = setInterval(() => {
+              count++;
+              marker.textContent = count;
+              if (count >= target) {
+                clearInterval(counter);
+              }
+            }, 100);
+          }
+        }
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+  
+  timelineItems.forEach(item => {
+    timelineObserver.observe(item);
+  });
+  
+  // Floating Elements Animation
+  const floatingElements = document.querySelectorAll('.element');
+  
+  floatingElements.forEach((element, index) => {
+    // Add random movement
+    setInterval(() => {
+      const randomX = (Math.random() - 0.5) * 50;
+      const randomY = (Math.random() - 0.5) * 50;
+      const randomRotate = (Math.random() - 0.5) * 60;
+      
+      element.style.transform += ` translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+    }, 3000 + (index * 1000));
+  });
+  
+  // Services Header Parallax
+  const servicesHeader = document.querySelector('.services-header');
+  
+  if (servicesHeader) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallax = scrolled * 0.5;
+      
+      const floatingElements = servicesHeader.querySelectorAll('.element');
+      floatingElements.forEach((element, index) => {
+        const speed = 0.3 + (index * 0.1);
+        element.style.transform = `translateY(${parallax * speed}px)`;
+      });
+    });
+  }
+});
+
+// Add CSS for service ripple animation
+const serviceRippleStyle = document.createElement('style');
+serviceRippleStyle.textContent = `
+  @keyframes serviceRipple {
+    0% {
+      transform: scale(0);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(serviceRippleStyle);
