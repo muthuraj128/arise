@@ -620,26 +620,210 @@
 
   </section>
 
-  <!-- Contact Section -->
+  <!-- Modern Contact Section -->
   <section id="contact">
-    <h2 class="section-title">Let's Begin Together</h2>
-    <p class="section-intro">Ready to rise? Drop us a message or connect on socials — we're here to build with you.</p>
-
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-whatsapp"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
+    <!-- Contact Header -->
+    <div class="contact-header">
+      <div class="contact-background">
+        <div class="contact-orbs">
+          <div class="contact-orb orb-1"></div>
+          <div class="contact-orb orb-2"></div>
+          <div class="contact-orb orb-3"></div>
+          <div class="contact-orb orb-4"></div>
+        </div>
+      </div>
+      <div class="contact-header-content">
+        <div class="contact-badge">🚀 Let's Connect</div>
+        <h2 class="contact-title">
+          <span class="title-part">Ready to</span>
+          <span class="title-part highlight">Transform</span>
+          <span class="title-part">Your Brand?</span>
+        </h2>
+        <p class="contact-intro">Let's create something extraordinary together. Share your vision, and we'll make it reality.</p>
+      </div>
     </div>
 
-    <footer>
-      <p>© 2025 ARISE | Where the Growth Begins</p>
+    <!-- Contact Content Grid -->
+    <div class="contact-content-grid">
+      
+      <!-- Contact Form Card -->
+      <div class="contact-form-card">
+        <div class="form-card-header">
+          <h3>💬 Send us a Message</h3>
+          <p>We typically respond within 24 hours</p>
+        </div>
+        
+        <form class="modern-contact-form" id="contactForm">
+          <div class="form-group">
+            <div class="input-container">
+              <input type="text" id="name" name="name" required />
+              <label for="name" class="floating-label">Your Name</label>
+              <div class="input-line"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-container">
+              <input type="email" id="email" name="email" required />
+              <label for="email" class="floating-label">Email Address</label>
+              <div class="input-line"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-container">
+              <input type="tel" id="phone" name="phone" />
+              <label for="phone" class="floating-label">Phone Number (Optional)</label>
+              <div class="input-line"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-container">
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a Service</option>
+                <option value="brand-identity">Brand Identity</option>
+                <option value="business-strategy">Business Strategy</option>
+                <option value="social-media">Social Media Management</option>
+                <option value="logo-design">Logo Design</option>
+                <option value="digital-marketing">Digital Marketing</option>
+                <option value="website-design">Website Design</option>
+                <option value="other">Other</option>
+              </select>
+              <label for="service" class="floating-label">Select a Service</label>
+              <div class="input-line"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-container">
+              <textarea id="message" name="message" rows="4" required></textarea>
+              <label for="message" class="floating-label">Your Message</label>
+              <div class="input-line"></div>
+            </div>
+          </div>
+          
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Send Message</span>
+            <span class="btn-icon">✨</span>
+            <div class="btn-ripple"></div>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info Card -->
+      <div class="contact-info-card">
+        <div class="info-card-header">
+          <h3>📞 Get in Touch</h3>
+          <p>Multiple ways to reach us</p>
+        </div>
+        
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="method-icon email-icon">📧</div>
+            <div class="method-info">
+              <h4>Email Us</h4>
+              <p>hello@arise.com</p>
+              <span class="method-label">We reply within 24 hours</span>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="method-icon phone-icon">📱</div>
+            <div class="method-info">
+              <h4>Call Us</h4>
+              <p>+91 98765 43210</p>
+              <span class="method-label">Mon-Fri, 9AM-6PM IST</span>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="method-icon location-icon">📍</div>
+            <div class="method-info">
+              <h4>Visit Us</h4>
+              <p>Bangalore, India</p>
+              <span class="method-label">By appointment only</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Social Media Links -->
+        <div class="social-connect">
+          <h4>🌐 Follow Our Journey</h4>
+          <div class="social-links-grid">
+            <a href="#" class="social-link whatsapp-link">
+              <div class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp"></div>
+              <span>WhatsApp</span>
+            </a>
+            <a href="#" class="social-link instagram-link">
+              <div class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram"></div>
+              <span>Instagram</span>
+            </a>
+            <a href="#" class="social-link linkedin-link">
+              <div class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn"></div>
+              <span>LinkedIn</span>
+            </a>
+            <a href="#" class="social-link twitter-link">
+              <div class="social-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter"></div>
+              <span>Twitter</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Stats -->
+        <div class="contact-stats">
+          <div class="contact-stat">
+            <div class="stat-value">24h</div>
+            <div class="stat-desc">Response Time</div>
+          </div>
+          <div class="contact-stat">
+            <div class="stat-value">100%</div>
+            <div class="stat-desc">Client Satisfaction</div>
+          </div>
+          <div class="contact-stat">
+            <div class="stat-value">50+</div>
+            <div class="stat-desc">Projects Delivered</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-symbol">🚀</div>
+            <span class="logo-text">ARISE</span>
+          </div>
+          <p class="footer-tagline">Where Growth Begins</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-section">
+            <h5>Services</h5>
+            <ul>
+              <li><a href="#services">Brand Identity</a></li>
+              <li><a href="#services">Digital Marketing</a></li>
+              <li><a href="#services">Website Design</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#team">Our Team</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 ARISE. All rights reserved. Crafted with ❤️ in India</p>
+      </div>
     </footer>
   </section>
 

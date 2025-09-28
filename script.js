@@ -689,3 +689,167 @@ teamRippleStyle.textContent = `
   }
 `;
 document.head.appendChild(teamRippleStyle);
+
+// =====================================================
+// CONTACT FORM INTERACTIONS
+// =====================================================
+
+// Floating Label Animation and Form Interactions
+document.addEventListener('DOMContentLoaded', function() {
+  // Floating Label Animation
+  const inputs = document.querySelectorAll('.input-container input, .input-container textarea, .input-container select');
+  
+  inputs.forEach(input => {
+    // Initial state check
+    if (input.value && input.value !== "") {
+      input.classList.add('has-value');
+    }
+    
+    // Focus and blur events
+    input.addEventListener('focus', function() {
+      this.parentElement.classList.add('focused');
+    });
+    
+    input.addEventListener('blur', function() {
+      this.parentElement.classList.remove('focused');
+      if (this.value && this.value !== "") {
+        this.classList.add('has-value');
+      } else {
+        this.classList.remove('has-value');
+      }
+    });
+    
+    // Input and change events for real-time validation
+    input.addEventListener('input', function() {
+      if (this.value && this.value !== "") {
+        this.classList.add('has-value');
+      } else {
+        this.classList.remove('has-value');
+      }
+    });
+    
+    // Special handling for select elements
+    if (input.tagName === 'SELECT') {
+      input.addEventListener('change', function() {
+        if (this.value && this.value !== "") {
+          this.classList.add('has-value');
+          this.parentElement.classList.add('has-selection');
+        } else {
+          this.classList.remove('has-value');
+          this.parentElement.classList.remove('has-selection');
+        }
+      });
+    }
+  });
+  
+  // Form Submission
+  const contactForm = document.querySelector('.modern-contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+      
+      // Loading state
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitBtn.disabled = true;
+      
+      // Simulate form submission
+      setTimeout(() => {
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+        
+        // Reset form
+        setTimeout(() => {
+          this.reset();
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.background = 'linear-gradient(135deg, #F57C00 0%, #FF9800 100%)';
+          
+          // Remove has-value classes
+          inputs.forEach(input => {
+            input.classList.remove('has-value');
+          });
+        }, 2000);
+      }, 1500);
+    });
+  }
+  
+  // Contact Method Hover Effects
+  const contactMethods = document.querySelectorAll('.contact-method');
+  contactMethods.forEach(method => {
+    method.addEventListener('mouseenter', function() {
+      const icon = this.querySelector('.method-icon');
+      if (icon) {
+        icon.style.transform = 'scale(1.1) rotate(5deg)';
+        icon.style.background = 'rgba(245, 124, 0, 0.2)';
+        icon.style.transition = 'all 0.3s ease';
+      }
+    });
+    
+    method.addEventListener('mouseleave', function() {
+      const icon = this.querySelector('.method-icon');
+      if (icon) {
+        icon.style.transform = 'scale(1) rotate(0deg)';
+        icon.style.background = 'rgba(245, 124, 0, 0.1)';
+      }
+    });
+  });
+  
+  // Social Links Hover Animation
+  const socialLinks = document.querySelectorAll('.social-link');
+  socialLinks.forEach(link => {
+    link.addEventListener('mouseenter', function() {
+      const icon = this.querySelector('.social-icon');
+      if (icon) {
+        icon.style.transform = 'scale(1.2) rotate(10deg)';
+        icon.style.transition = 'all 0.3s ease';
+      }
+    });
+    
+    link.addEventListener('mouseleave', function() {
+      const icon = this.querySelector('.social-icon');
+      if (icon) {
+        icon.style.transform = 'scale(1) rotate(0deg)';
+      }
+    });
+  });
+  
+  // Contact Stats Counter Animation
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const statValues = entry.target.querySelectorAll('.stat-value');
+        statValues.forEach((stat, index) => {
+          const originalText = stat.textContent;
+          const numbers = originalText.match(/\d+/);
+          
+          if (numbers) {
+            const targetValue = parseInt(numbers[0]);
+            let currentValue = 0;
+            const increment = targetValue / 50;
+            const suffix = originalText.replace(/\d+/, '');
+            
+            const timer = setInterval(() => {
+              currentValue += increment;
+              if (currentValue >= targetValue) {
+                stat.textContent = targetValue + suffix;
+                clearInterval(timer);
+              } else {
+                stat.textContent = Math.floor(currentValue) + suffix;
+              }
+            }, 40);
+          }
+        });
+        
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  const contactStats = document.querySelector('.contact-stats');
+  if (contactStats) {
+    statsObserver.observe(contactStats);
+  }
+});
