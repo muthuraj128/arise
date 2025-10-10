@@ -5,6 +5,59 @@ function scrollToSection(id) {
   }
 }
 
+// Mobile Hamburger Menu Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburgerMenu = document.querySelector('.hamburger-menu');
+  const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+  const closeMobileNav = document.querySelector('.close-mobile-nav');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (hamburgerMenu && mobileNavOverlay) {
+    // Open mobile menu
+    hamburgerMenu.addEventListener('click', function() {
+      hamburgerMenu.classList.add('active');
+      mobileNavOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close mobile menu
+    function closeMobileMenu() {
+      hamburgerMenu.classList.remove('active');
+      mobileNavOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    if (closeMobileNav) {
+      closeMobileNav.addEventListener('click', closeMobileMenu);
+    }
+
+    // Close menu when clicking overlay background
+    mobileNavOverlay.addEventListener('click', function(e) {
+      if (e.target === mobileNavOverlay) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close menu when clicking on navigation links
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        closeMobileMenu();
+        const targetId = this.getAttribute('href').substring(1);
+        setTimeout(() => {
+          scrollToSection(targetId);
+        }, 300);
+      });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileNavOverlay.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    });
+  }
+});
+
 // Floating Navigation System
 document.addEventListener('DOMContentLoaded', function() {
   const floatingNav = document.querySelector('.floating-navbar');
@@ -851,5 +904,101 @@ document.addEventListener('DOMContentLoaded', function() {
   const contactStats = document.querySelector('.contact-stats');
   if (contactStats) {
     statsObserver.observe(contactStats);
+  }
+});
+
+// =====================================================
+// TEAM HORIZONTAL SCROLL FUNCTIONALITY
+// =====================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+  const teamGrid = document.querySelector('.modern-team-grid');
+  const scrollLeftBtn = document.querySelector('.scroll-left');
+  const scrollRightBtn = document.querySelector('.scroll-right');
+  
+  if (teamGrid && scrollLeftBtn && scrollRightBtn) {
+    const cardWidth = 280 + 32; // Card width + gap
+    const scrollAmount = cardWidth * 2; // Scroll 2 cards at a time
+    
+    // Scroll left functionality
+    scrollLeftBtn.addEventListener('click', function() {
+      teamGrid.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+      
+      // Add click animation
+      this.style.transform = 'translateY(-50%) scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = 'translateY(-50%) scale(1)';
+      }, 150);
+    });
+    
+    // Scroll right functionality
+    scrollRightBtn.addEventListener('click', function() {
+      teamGrid.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+      
+      // Add click animation
+      this.style.transform = 'translateY(-50%) scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = 'translateY(-50%) scale(1)';
+      }, 150);
+    });
+    
+    // Update button visibility based on scroll position
+    function updateScrollButtons() {
+      const maxScroll = teamGrid.scrollWidth - teamGrid.clientWidth;
+      const currentScroll = teamGrid.scrollLeft;
+      
+      // Show/hide left button
+      if (currentScroll <= 10) {
+        scrollLeftBtn.style.opacity = '0.5';
+        scrollLeftBtn.style.pointerEvents = 'none';
+      } else {
+        scrollLeftBtn.style.opacity = '1';
+        scrollLeftBtn.style.pointerEvents = 'auto';
+      }
+      
+      // Show/hide right button  
+      if (currentScroll >= maxScroll - 10) {
+        scrollRightBtn.style.opacity = '0.5';
+        scrollRightBtn.style.pointerEvents = 'none';
+      } else {
+        scrollRightBtn.style.opacity = '1';
+        scrollRightBtn.style.pointerEvents = 'auto';
+      }
+    }
+    
+    // Listen for scroll events
+    teamGrid.addEventListener('scroll', updateScrollButtons);
+    
+    // Initial button state
+    updateScrollButtons();
+    
+    // Touch/swipe support for mobile
+    let isScrolling = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    
+    teamGrid.addEventListener('touchstart', function(e) {
+      isScrolling = true;
+      startX = e.touches[0].pageX - teamGrid.offsetLeft;
+      scrollLeft = teamGrid.scrollLeft;
+    });
+    
+    teamGrid.addEventListener('touchmove', function(e) {
+      if (!isScrolling) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - teamGrid.offsetLeft;
+      const walk = (x - startX) * 2;
+      teamGrid.scrollLeft = scrollLeft - walk;
+    });
+    
+    teamGrid.addEventListener('touchend', function() {
+      isScrolling = false;
+    });
   }
 });

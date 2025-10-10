@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARISE | Where the Growth Begins</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,7 +14,7 @@
   <!-- Floating Navigation System -->
   <nav class="floating-navbar" aria-label="Main Navigation">
     <div class="logo-orb">
-      <div class="logo-text">AR</div>
+      <img src="main.jpg" alt="ARISE Logo" class="logo-orb" />
     </div>
     <ul class="nav-pills">
       <li><a href="#hero">Home</a></li>
@@ -20,7 +23,37 @@
       <li><a href="#team">Team</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    
+    <!-- Mobile Hamburger Menu -->
+    <button class="hamburger-menu" aria-label="Toggle Navigation">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
   </nav>
+  
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay">
+    <div class="mobile-nav-content">
+      <div class="mobile-nav-header">
+        <div class="mobile-logo">
+          <img src="main.jpg" alt="ARISE Logo" class="mobile-logo-img" />
+          <span class="mobile-logo-text">ARISE</span>
+        </div>
+        <button class="close-mobile-nav" aria-label="Close Navigation">
+          <span class="close-line"></span>
+          <span class="close-line"></span>
+        </button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+        <li><a href="#about" class="mobile-nav-link">About</a></li>
+        <li><a href="#services" class="mobile-nav-link">Services</a></li>
+        <li><a href="#team" class="mobile-nav-link">Team</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <section id="hero">
@@ -41,13 +74,8 @@
         </div>
         <div class="brand-text">
           <h1 class="hero-title">
-            <span class="word-arise">ARISE</span>
+            <img src="Arise (10).png" alt="ARISE" class="word-arise-image" />
           </h1>
-          <p class="tagline-dynamic">
-            <span class="word-where">Where the</span>
-            <span class="word-growth">Growth</span>
-            <span class="word-begins">Begins</span>
-          </p>
         </div>
       </div>
       
@@ -85,11 +113,7 @@
       </div>
     </div>
     
-    <!-- Scroll Indicator -->
-    <div class="scroll-prompt">
-      <div class="scroll-text">Discover More</div>
-      <div class="scroll-arrow"></div>
-    </div>
+
   </section>
 
   <!-- About Section - Innovative Split-Screen Design -->
@@ -149,7 +173,7 @@
           <div class="brand-identity-center">
             <div class="brand-logo-modern">
               <div class="logo-hexagon">
-                <span class="logo-text-modern">AR</span>
+                <img src="main.jpg" alt="ARISE Logo" class="logo-hexagon" />
               </div>
               <div class="brand-tagline">Where Growth Begins</div>
             </div>
@@ -469,7 +493,11 @@
     </div>
 
     <!-- Interactive Team Grid -->
-    <div class="modern-team-grid">
+    <div class="team-scroll-container">
+      <button class="team-scroll-btn scroll-left" aria-label="Scroll Left">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="modern-team-grid">
       
       <!-- Founder Card -->
       <div class="modern-team-card founder-card" data-member="founder">
@@ -494,10 +522,10 @@
         </div>
         <div class="team-info">
           <div class="name-container">
-            <h3 class="member-name">Ravi Kumar</h3>
+            <h3 class="member-name">Kalaiarasu S</h3>
             <div class="name-underline"></div>
           </div>
-          <p class="member-role">Founder & Brand Strategist</p>
+          <p class="member-role">Founder & CEO</p>
           <div class="member-bio">
             <p>"Transforming visions into powerful brand identities that resonate and inspire."</p>
           </div>
@@ -597,21 +625,235 @@
         </div>
       </div>
 
+      <!-- Marketing Specialist Card -->
+      <div class="modern-team-card marketing-card" data-member="marketing">
+        <div class="card-decoration">
+          <div class="deco-circle deco-1"></div>
+          <div class="deco-circle deco-2"></div>
+          <div class="deco-line deco-3"></div>
+        </div>
+        <div class="card-background">
+          <div class="card-pattern"></div>
+        </div>
+        <div class="card-header">
+          <div class="member-badge marketing-badge">📢 Marketing</div>
+        </div>
+        <div class="team-image-container">
+          <div class="image-frame">
+            <div class="image-border-animation"></div>
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" alt="Sarah Chen" class="team-image" />
+            <div class="image-overlay"></div>
+          </div>
+          <div class="status-dot">🟢</div>
+        </div>
+        <div class="team-info">
+          <div class="name-container">
+            <h3 class="member-name">Sarah Chen</h3>
+            <div class="name-underline"></div>
+          </div>
+          <p class="member-role">Marketing Specialist</p>
+          <div class="member-bio">
+            <p>"Crafting compelling campaigns that connect brands with their perfect audience."</p>
+          </div>
+          <div class="member-skills">
+            <span class="skill skill-primary">📢 Marketing</span>
+            <span class="skill skill-secondary">📊 Analytics</span>
+          </div>
+        </div>
+        <div class="card-shine"></div>
+        <div class="card-corner-decor">
+          <div class="corner-1"></div>
+          <div class="corner-2"></div>
+        </div>
+      </div>
+
+      <!-- UI/UX Designer Card -->
+      <div class="modern-team-card uiux-card" data-member="uiux">
+        <div class="card-decoration">
+          <div class="deco-circle deco-1"></div>
+          <div class="deco-circle deco-2"></div>
+          <div class="deco-line deco-3"></div>
+        </div>
+        <div class="card-background">
+          <div class="card-pattern"></div>
+        </div>
+        <div class="card-header">
+          <div class="member-badge uiux-badge">🖥️ UI/UX</div>
+        </div>
+        <div class="team-image-container">
+          <div class="image-frame">
+            <div class="image-border-animation"></div>
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face" alt="Alex Rodriguez" class="team-image" />
+            <div class="image-overlay"></div>
+          </div>
+          <div class="status-dot">🟢</div>
+        </div>
+        <div class="team-info">
+          <div class="name-container">
+            <h3 class="member-name">Alex Rodriguez</h3>
+            <div class="name-underline"></div>
+          </div>
+          <p class="member-role">UI/UX Designer</p>
+          <div class="member-bio">
+            <p>"Creating intuitive experiences that users love and remember."</p>
+          </div>
+          <div class="member-skills">
+            <span class="skill skill-primary">🖥️ UI Design</span>
+            <span class="skill skill-secondary">👤 UX Research</span>
+          </div>
+        </div>
+        <div class="card-shine"></div>
+        <div class="card-corner-decor">
+          <div class="corner-1"></div>
+          <div class="corner-2"></div>
+        </div>
+      </div>
+
+      <!-- Developer Card -->
+      <div class="modern-team-card developer-card" data-member="developer">
+        <div class="card-decoration">
+          <div class="deco-circle deco-1"></div>
+          <div class="deco-circle deco-2"></div>
+          <div class="deco-line deco-3"></div>
+        </div>
+        <div class="card-background">
+          <div class="card-pattern"></div>
+        </div>
+        <div class="card-header">
+          <div class="member-badge developer-badge">💻 Developer</div>
+        </div>
+        <div class="team-image-container">
+          <div class="image-frame">
+            <div class="image-border-animation"></div>
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face" alt="David Kim" class="team-image" />
+            <div class="image-overlay"></div>
+          </div>
+          <div class="status-dot">🟢</div>
+        </div>
+        <div class="team-info">
+          <div class="name-container">
+            <h3 class="member-name">David Kim</h3>
+            <div class="name-underline"></div>
+          </div>
+          <p class="member-role">Full Stack Developer</p>
+          <div class="member-bio">
+            <p>"Building robust, scalable solutions that power exceptional digital experiences."</p>
+          </div>
+          <div class="member-skills">
+            <span class="skill skill-primary">💻 Development</span>
+            <span class="skill skill-secondary">⚡ Performance</span>
+          </div>
+        </div>
+        <div class="card-shine"></div>
+        <div class="card-corner-decor">
+          <div class="corner-1"></div>
+          <div class="corner-2"></div>
+        </div>
+      </div>
+
+      <!-- Content Writer Card -->
+      <div class="modern-team-card writer-card" data-member="writer">
+        <div class="card-decoration">
+          <div class="deco-circle deco-1"></div>
+          <div class="deco-circle deco-2"></div>
+          <div class="deco-line deco-3"></div>
+        </div>
+        <div class="card-background">
+          <div class="card-pattern"></div>
+        </div>
+        <div class="card-header">
+          <div class="member-badge writer-badge">✍️ Writer</div>
+        </div>
+        <div class="team-image-container">
+          <div class="image-frame">
+            <div class="image-border-animation"></div>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face" alt="Maya Patel" class="team-image" />
+            <div class="image-overlay"></div>
+          </div>
+          <div class="status-dot">🟢</div>
+        </div>
+        <div class="team-info">
+          <div class="name-container">
+            <h3 class="member-name">Maya Patel</h3>
+            <div class="name-underline"></div>
+          </div>
+          <p class="member-role">Content Writer</p>
+          <div class="member-bio">
+            <p>"Weaving words that inform, inspire, and ignite action in every reader."</p>
+          </div>
+          <div class="member-skills">
+            <span class="skill skill-primary">✍️ Writing</span>
+            <span class="skill skill-secondary">🎯 Messaging</span>
+          </div>
+        </div>
+        <div class="card-shine"></div>
+        <div class="card-corner-decor">
+          <div class="corner-1"></div>
+          <div class="corner-2"></div>
+        </div>
+      </div>
+
+      <!-- Project Manager Card -->
+      <div class="modern-team-card manager-card" data-member="manager">
+        <div class="card-decoration">
+          <div class="deco-circle deco-1"></div>
+          <div class="deco-circle deco-2"></div>
+          <div class="deco-line deco-3"></div>
+        </div>
+        <div class="card-background">
+          <div class="card-pattern"></div>
+        </div>
+        <div class="card-header">
+          <div class="member-badge manager-badge">📋 Manager</div>
+        </div>
+        <div class="team-image-container">
+          <div class="image-frame">
+            <div class="image-border-animation"></div>
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face" alt="James Wilson" class="team-image" />
+            <div class="image-overlay"></div>
+          </div>
+          <div class="status-dot">🟢</div>
+        </div>
+        <div class="team-info">
+          <div class="name-container">
+            <h3 class="member-name">James Wilson</h3>
+            <div class="name-underline"></div>
+          </div>
+          <p class="member-role">Project Manager</p>
+          <div class="member-bio">
+            <p>"Orchestrating seamless workflows that turn ambitious visions into reality."</p>
+          </div>
+          <div class="member-skills">
+            <span class="skill skill-primary">📋 Management</span>
+            <span class="skill skill-secondary">🎯 Delivery</span>
+          </div>
+        </div>
+        <div class="card-shine"></div>
+        <div class="card-corner-decor">
+          <div class="corner-1"></div>
+          <div class="corner-2"></div>
+        </div>
+      </div>
+
+    </div>
+      <button class="team-scroll-btn scroll-right" aria-label="Scroll Right">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
 
     <!-- Compact Team Stats -->
     <div class="team-stats-compact">
-      <div class="stat-card" data-count="50">
+      <div class="stat-card" data-count="25">
         <div class="stat-icon">🚀</div>
         <div class="stat-number">0</div>
         <div class="stat-label">Projects</div>
       </div>
-      <div class="stat-card" data-count="25">
+      <div class="stat-card" data-count="10">
         <div class="stat-icon">❤️</div>
         <div class="stat-number">0</div>
         <div class="stat-label">Clients</div>
       </div>
-      <div class="stat-card" data-count="5">
+      <div class="stat-card" data-count="1">
         <div class="stat-icon">⭐</div>
         <div class="stat-number">0</div>
         <div class="stat-label">Years</div>
@@ -633,7 +875,7 @@
         </div>
       </div>
       <div class="contact-header-content">
-        <div class="contact-badge">🚀 Let's Connect</div>
+        <div><button class="contact-badge"><a>🚀 Let's Connect</a></button></div>
         <h2 class="contact-title">
           <span class="title-part">Ready to</span>
           <span class="title-part highlight">Transform</span>
@@ -794,7 +1036,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <div class="footer-logo">
-            <div class="logo-symbol">🚀</div>
+            <img src="main.jpg" alt="ARISE Logo" class="logo-symbol" />
             <span class="logo-text">ARISE</span>
           </div>
           <p class="footer-tagline">Where Growth Begins</p>
