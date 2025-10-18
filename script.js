@@ -1,3 +1,132 @@
+// Sleek Pointy Arrow Cursor with Modern Effects
+document.addEventListener('DOMContentLoaded', function() {
+  // Create arrow cursor
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  document.body.appendChild(cursor);
+  
+  let mouseX = 0, mouseY = 0;
+  let trailCounter = 0;
+  
+  // Instant cursor positioning
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+    
+    // Create glowing trail orbs
+    trailCounter++;
+    if (trailCounter % 3 === 0) {
+      createGlowOrb(mouseX, mouseY);
+    }
+  });
+  
+  // Glowing orb trail
+  function createGlowOrb(x, y) {
+    const orb = document.createElement('div');
+    orb.className = 'cursor-trail';
+    orb.style.left = (x + (Math.random() - 0.5) * 20) + 'px';
+    orb.style.top = (y + (Math.random() - 0.5) * 20) + 'px';
+    document.body.appendChild(orb);
+    
+    setTimeout(() => orb.remove(), 800);
+  }
+  
+  // Magnetic ring effect
+  function createMagneticRing(x, y) {
+    const ring = document.createElement('div');
+    ring.className = 'magnetic-ring';
+    ring.style.left = (x - 10) + 'px';
+    ring.style.top = (y - 10) + 'px';
+    document.body.appendChild(ring);
+    
+    setTimeout(() => ring.remove(), 800);
+  }
+  
+  // Glow wave
+  function createGlowWave(x, y) {
+    const wave = document.createElement('div');
+    wave.className = 'glow-wave';
+    wave.style.left = (x - 15) + 'px';
+    wave.style.top = (y - 15) + 'px';
+    document.body.appendChild(wave);
+    
+    setTimeout(() => wave.remove(), 700);
+  }
+  
+  // Energy particles burst
+  function createEnergyBurst(x, y) {
+    for (let i = 0; i < 12; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'energy-particle';
+      
+      const angle = (i * 30) * Math.PI / 180;
+      const distance = 40 + Math.random() * 30;
+      
+      particle.style.left = x + 'px';
+      particle.style.top = y + 'px';
+      particle.style.setProperty('--x', Math.cos(angle) * distance + 'px');
+      particle.style.setProperty('--y', Math.sin(angle) * distance + 'px');
+      
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 600);
+    }
+  }
+  
+  // Click animation
+  document.addEventListener('mousedown', (e) => {
+    cursor.classList.add('click');
+    createMagneticRing(e.clientX, e.clientY);
+    createGlowWave(e.clientX, e.clientY);
+    createEnergyBurst(e.clientX, e.clientY);
+    
+    // Extra orbs on click
+    for (let i = 0; i < 8; i++) {
+      setTimeout(() => {
+        createGlowOrb(
+          e.clientX + (Math.random() - 0.5) * 50,
+          e.clientY + (Math.random() - 0.5) * 50
+        );
+      }, i * 30);
+    }
+    
+    // Second ring for emphasis
+    setTimeout(() => {
+      createMagneticRing(e.clientX, e.clientY);
+    }, 200);
+  });
+  
+  document.addEventListener('mouseup', () => {
+    setTimeout(() => cursor.classList.remove('click'), 100);
+  });
+  
+  // Hover effects
+  const interactiveElements = 'a, button, .nav-link, .cta-button, input, textarea, select, .service-card, .modern-team-card, .contact-method, .skill, .hamburger-menu, .footer-link';
+  
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveElements)) {
+      cursor.classList.add('hover');
+    }
+  });
+  
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactiveElements)) {
+      cursor.classList.remove('hover');
+    }
+  });
+  
+  // Hide/show cursor
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+  });
+  
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+  });
+});
+
 function scrollToSection(id) {
   const section = document.getElementById(id);
   if (section) {
