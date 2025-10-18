@@ -795,37 +795,81 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Form Submission
+  // Form Submission with Web3Forms
   const contactForm = document.querySelector('.modern-contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const submitBtn = this.querySelector('.submit-btn');
       const originalText = submitBtn.innerHTML;
       
+      // Get form data
+      const formData = new FormData(this);
+      const data = {
+        access_key: 'fa444153-fc04-4c29-87b1-434d8d628306',
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        service: formData.get('service'),
+        message: formData.get('message')
+      };
+      
       // Loading state
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       submitBtn.disabled = true;
       
-      // Simulate form submission
-      setTimeout(() => {
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+      try {
+        // Using Web3Forms - Free, no limits!
+        // Get your access key from https://web3forms.com/
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
         
-        // Reset form
+        const result = await response.json();
+        
+        if (result.success) {
+          // Success
+          submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+          submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+          
+          // Show success message
+          alert('Thank you! Your message has been sent successfully. We will get back to you soon.');
+          
+          // Reset form
+          setTimeout(() => {
+            this.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.background = 'linear-gradient(135deg, #F57C00 0%, #FF9800 100%)';
+            
+            // Remove has-value classes
+            const inputs = this.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+              input.classList.remove('has-value');
+            });
+          }, 2000);
+        } else {
+          throw new Error('Failed to send message');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
+        submitBtn.style.background = 'linear-gradient(135deg, #dc3545, #c82333)';
+        
+        alert('Oops! Something went wrong. Please try again or contact us directly at hello@arise.com');
+        
         setTimeout(() => {
-          this.reset();
           submitBtn.innerHTML = originalText;
           submitBtn.disabled = false;
           submitBtn.style.background = 'linear-gradient(135deg, #F57C00 0%, #FF9800 100%)';
-          
-          // Remove has-value classes
-          inputs.forEach(input => {
-            input.classList.remove('has-value');
-          });
-        }, 2000);
-      }, 1500);
+        }, 3000);
+      }
     });
   }
   
