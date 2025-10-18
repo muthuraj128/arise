@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -169,15 +170,6 @@
       <!-- Right Side: Modern Philosophy Cards -->
       <div class="philosophy-side">
         <div class="philosophy-modern-container">
-          <!-- Central Brand Identity -->
-          <div class="brand-identity-center">
-            <div class="brand-logo-modern">
-              <div class="logo-hexagon">
-                <img src="main.jpg" alt="ARISE Logo" class="logo-hexagon" />
-              </div>
-              <div class="brand-tagline">Where Growth Begins</div>
-            </div>
-          </div>
           
           <!-- Modern Philosophy Cards -->
           <div class="philosophy-cards-modern">
@@ -241,30 +233,130 @@
     </div>
 
     <!-- Innovative Testimonial Slider -->
-    <div class="philosophy-quote-section">
-      <div class="quote-container">
-        <div class="quote-track">
-          <div class="quote-slide active">
-            <div class="quote-mark">"</div>
-            <blockquote>We don't just build brands — we architect digital legacies that inspire generations.</blockquote>
-            <cite>Our Promise</cite>
+    <!-- Testimonial Section -->
+    <div class="testimonial-section-about">
+      <div class="testimonial-header">
+        <h2 class="testimonial-title">What Our Clients Say</h2>
+        <p class="testimonial-subtitle">Real stories from brands we've transformed</p>
+      </div>
+      
+      <div class="testimonial-container">
+        <!-- Navigation Buttons -->
+        <button class="testimonial-nav-btn prev-btn" onclick="changeTestimonial(-1)">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <!-- Testimonial Track -->
+        <div class="testimonial-track">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-slide active">
+            <div class="testimonial-quote-mark">"</div>
+            <div class="testimonial-content-box">
+              <p class="testimonial-text">ARISE transformed our brand identity completely! Their creative approach and strategic thinking helped us increase our market presence by 300%. The team's attention to detail and innovative solutions exceeded all our expectations.</p>
+              <div class="testimonial-author-box">
+                <div class="author-avatar">
+                  <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="author-details">
+                  <h4 class="author-name">Sarah Johnson</h4>
+                  <p class="author-position">CEO, TechVision Inc.</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="quote-slide">
-            <div class="quote-mark">"</div>
-            <blockquote>Every pixel, every word, every interaction is crafted to elevate your brand's story.</blockquote>
-            <cite>Our Craft</cite>
+          
+          <!-- Testimonial 2 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-quote-mark">"</div>
+            <div class="testimonial-content-box">
+              <p class="testimonial-text">Working with ARISE was a game-changer for our startup. They understood our vision perfectly and delivered beyond expectations. Our conversion rates doubled within three months, and customer engagement has never been higher!</p>
+              <div class="testimonial-author-box">
+                <div class="author-avatar">
+                  <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="author-details">
+                  <h4 class="author-name">Michael Chen</h4>
+                  <p class="author-position">Founder, GrowthHub</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="quote-slide">
-            <div class="quote-mark">"</div>
-            <blockquote>We rise by lifting others — your success is our greatest achievement.</blockquote>
-            <cite>Our Philosophy</cite>
+          
+          <!-- Testimonial 3 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-quote-mark">"</div>
+            <div class="testimonial-content-box">
+              <p class="testimonial-text">The team at ARISE is incredibly talented and professional. They took our outdated brand and turned it into something modern, compelling, and results-driven. Our brand recognition increased by 250% in just six months!</p>
+              <div class="testimonial-author-box">
+                <div class="author-avatar">
+                  <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="author-details">
+                  <h4 class="author-name">Emily Rodriguez</h4>
+                  <p class="author-position">Marketing Director, Innovate Co.</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 4 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-quote-mark">"</div>
+            <div class="testimonial-content-box">
+              <p class="testimonial-text">ARISE doesn't just design; they create experiences that resonate with audiences. Our customer engagement skyrocketed after the rebrand. This was the best investment we've made in our business growth journey!</p>
+              <div class="testimonial-author-box">
+                <div class="author-avatar">
+                  <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="author-details">
+                  <h4 class="author-name">David Thompson</h4>
+                  <p class="author-position">Owner, Momentum Solutions</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="quote-indicators">
-          <button class="indicator active" data-slide="0"></button>
-          <button class="indicator" data-slide="1"></button>
-          <button class="indicator" data-slide="2"></button>
-        </div>
+        
+        <!-- Navigation Buttons -->
+        <button class="testimonial-nav-btn next-btn" onclick="changeTestimonial(1)">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      
+      <!-- Testimonial Indicators -->
+      <div class="testimonial-indicators">
+        <button class="testimonial-dot active" onclick="currentTestimonial(0)"></button>
+        <button class="testimonial-dot" onclick="currentTestimonial(1)"></button>
+        <button class="testimonial-dot" onclick="currentTestimonial(2)"></button>
+        <button class="testimonial-dot" onclick="currentTestimonial(3)"></button>
       </div>
     </div>
   </section>
@@ -287,11 +379,167 @@
           <span class="title-part highlight">Solutions</span>
         </h2>
         <p class="services-intro">We craft comprehensive brand experiences that drive growth, inspire audiences, and create lasting impact in the digital landscape.</p>
+        
+        <!-- Service Category Toggle Switch -->
+        <div class="service-category-toggle">
+          <button class="category-btn active" data-category="freelance">
+            <span class="btn-icon">👤</span>
+            <span class="btn-label">Freelance Services</span>
+          </button>
+          <button class="category-btn" data-category="brand">
+            <span class="btn-icon">🏢</span>
+            <span class="btn-label">Brand Services</span>
+          </button>
+          <div class="toggle-slider"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Interactive Services Grid -->
-    <div class="services-grid">
+    <!-- Freelance Services Grid -->
+    <div class="services-grid freelance-services active" data-category="freelance">
+      
+      <!-- Graphic Design Service -->
+      <div class="service-card-modern graphic-design-card" data-service="graphic-design">
+        <div class="service-background">
+          <div class="service-pattern"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon-container">
+            <div class="service-icon">🎨</div>
+            <div class="icon-glow"></div>
+          </div>
+          <div class="service-info">
+            <h3 class="service-title">Graphic Design</h3>
+            <p class="service-description">Custom graphic design solutions including posters, flyers, social media graphics, and visual content that captures attention and communicates effectively.</p>
+            <div class="service-features">
+              <span class="feature">Social Graphics</span>
+              <span class="feature">Print Design</span>
+              <span class="feature">Illustrations</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-hover-effect"></div>
+      </div>
+
+      <!-- Logo Design Service -->
+      <div class="service-card-modern logo-design-card" data-service="logo-design">
+        <div class="service-background">
+          <div class="service-pattern"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon-container">
+            <div class="service-icon">✏️</div>
+            <div class="icon-glow"></div>
+          </div>
+          <div class="service-info">
+            <h3 class="service-title">Logo Design</h3>
+            <p class="service-description">Professional logo design that captures your brand essence with memorable, scalable, and versatile designs that work across all platforms.</p>
+            <div class="service-features">
+              <span class="feature">Custom Design</span>
+              <span class="feature">Multiple Concepts</span>
+              <span class="feature">All File Formats</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-hover-effect"></div>
+      </div>
+
+      <!-- Web Development Service -->
+      <div class="service-card-modern web-dev-card" data-service="web-development">
+        <div class="service-background">
+          <div class="service-pattern"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon-container">
+            <div class="service-icon">💻</div>
+            <div class="icon-glow"></div>
+          </div>
+          <div class="service-info">
+            <h3 class="service-title">Web Development</h3>
+            <p class="service-description">Modern, responsive websites and web applications built with latest technologies for optimal performance and user experience.</p>
+            <div class="service-features">
+              <span class="feature">Responsive Design</span>
+              <span class="feature">Modern Stack</span>
+              <span class="feature">Fast Performance</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-hover-effect"></div>
+      </div>
+
+      <!-- Content Writing Service -->
+      <div class="service-card-modern content-writing-card" data-service="content-writing">
+        <div class="service-background">
+          <div class="service-pattern"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon-container">
+            <div class="service-icon">✍️</div>
+            <div class="icon-glow"></div>
+          </div>
+          <div class="service-info">
+            <h3 class="service-title">Content Writing</h3>
+            <p class="service-description">Engaging, SEO-optimized content creation for blogs, websites, and marketing materials that resonates with your target audience.</p>
+            <div class="service-features">
+              <span class="feature">Blog Posts</span>
+              <span class="feature">SEO Content</span>
+              <span class="feature">Copywriting</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-hover-effect"></div>
+      </div>
+
+      <!-- Video Editing Service -->
+      <div class="service-card-modern video-editing-card" data-service="video-editing">
+        <div class="service-background">
+          <div class="service-pattern"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon-container">
+            <div class="service-icon">🎬</div>
+            <div class="icon-glow"></div>
+          </div>
+          <div class="service-info">
+            <h3 class="service-title">Video Editing</h3>
+            <p class="service-description">Professional video editing for social media, YouTube, and marketing campaigns with engaging transitions, effects, and storytelling.</p>
+            <div class="service-features">
+              <span class="feature">Social Videos</span>
+              <span class="feature">Motion Graphics</span>
+              <span class="feature">Color Grading</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-hover-effect"></div>
+      </div>
+
+      <!-- UI/UX Design Service -->
+      <div class="service-card-modern uiux-design-card" data-service="uiux-design">
+        <div class="service-background">
+          <div class="service-pattern"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon-container">
+            <div class="service-icon">🖥️</div>
+            <div class="icon-glow"></div>
+          </div>
+          <div class="service-info">
+            <h3 class="service-title">UI/UX Design</h3>
+            <p class="service-description">Intuitive user interface and experience design that combines aesthetics with functionality for websites and mobile applications.</p>
+            <div class="service-features">
+              <span class="feature">Wireframing</span>
+              <span class="feature">Prototyping</span>
+              <span class="feature">User Research</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-hover-effect"></div>
+      </div>
+
+    </div>
+
+    <!-- Brand Services Grid -->
+    <div class="services-grid brand-services" data-category="brand">
       
       <!-- Brand Identity Service -->
       <div class="service-card-modern brand-identity-card" data-service="brand-identity">
@@ -353,32 +601,9 @@
             <h3 class="service-title">Social Media Management</h3>
             <p class="service-description">Comprehensive social media strategy, content creation, and community management that builds engagement and drives brand awareness.</p>
             <div class="service-features">
-              <span class="feature">Content Creation</span>
+              <span class="feature">Content Strategy</span>
               <span class="feature">Community Management</span>
               <span class="feature">Analytics & Insights</span>
-            </div>
-          </div>
-        </div>
-        <div class="service-hover-effect"></div>
-      </div>
-
-      <!-- Logo Designing Service -->
-      <div class="service-card-modern logo-design-card" data-service="logo-design">
-        <div class="service-background">
-          <div class="service-pattern"></div>
-        </div>
-        <div class="service-content">
-          <div class="service-icon-container">
-            <div class="service-icon">🎨</div>
-            <div class="icon-glow"></div>
-          </div>
-          <div class="service-info">
-            <h3 class="service-title">Logo Design</h3>
-            <p class="service-description">Custom logo design that captures your brand essence with memorable, scalable, and versatile designs that work across all platforms.</p>
-            <div class="service-features">
-              <span class="feature">Custom Design</span>
-              <span class="feature">Multiple Concepts</span>
-              <span class="feature">File Formats</span>
             </div>
           </div>
         </div>
@@ -408,23 +633,46 @@
         <div class="service-hover-effect"></div>
       </div>
 
-      <!-- Website Design Service -->
-      <div class="service-card-modern website-design-card" data-service="website-design">
+      <!-- Brand Consulting Service -->
+      <div class="service-card-modern brand-consulting-card" data-service="brand-consulting">
         <div class="service-background">
           <div class="service-pattern"></div>
         </div>
         <div class="service-content">
           <div class="service-icon-container">
-            <div class="service-icon">💻</div>
+            <div class="service-icon">�</div>
             <div class="icon-glow"></div>
           </div>
           <div class="service-info">
-            <h3 class="service-title">Website Design</h3>
-            <p class="service-description">Responsive, user-focused website design and development that converts visitors into customers with seamless user experience and modern aesthetics.</p>
+            <h3 class="service-title">Brand Consulting</h3>
+            <p class="service-description">Expert brand consulting to refine your brand strategy, positioning, and messaging for maximum market impact and competitive advantage.</p>
             <div class="service-features">
-              <span class="feature">Responsive Design</span>
-              <span class="feature">User Experience</span>
-              <span class="feature">Performance Optimized</span>
+              <span class="feature">Brand Audit</span>
+              <span class="feature">Positioning Strategy</span>
+              <span class="feature">Market Analysis</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-hover-effect"></div>
+      </div>
+
+      <!-- Brand Communication Service -->
+      <div class="service-card-modern brand-comm-card" data-service="brand-communication">
+        <div class="service-background">
+          <div class="service-pattern"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon-container">
+            <div class="service-icon">�</div>
+            <div class="icon-glow"></div>
+          </div>
+          <div class="service-info">
+            <h3 class="service-title">Brand Communication</h3>
+            <p class="service-description">Integrated brand communication strategies that ensure consistent messaging across all touchpoints and platforms to build brand equity.</p>
+            <div class="service-features">
+              <span class="feature">Message Development</span>
+              <span class="feature">Content Strategy</span>
+              <span class="feature">Campaign Planning</span>
             </div>
           </div>
         </div>

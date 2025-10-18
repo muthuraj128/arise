@@ -1002,3 +1002,103 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// =====================================================
+// TESTIMONIAL SLIDER FUNCTIONALITY
+// =====================================================
+
+let currentTestimonialIndex = 0;
+const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+const testimonialDots = document.querySelectorAll('.testimonial-dot');
+
+function showTestimonial(index) {
+  // Ensure index is within bounds
+  if (index >= testimonialSlides.length) {
+    currentTestimonialIndex = 0;
+  } else if (index < 0) {
+    currentTestimonialIndex = testimonialSlides.length - 1;
+  } else {
+    currentTestimonialIndex = index;
+  }
+  
+  // Hide all testimonials
+  testimonialSlides.forEach(slide => {
+    slide.classList.remove('active');
+  });
+  
+  // Remove active from all dots
+  testimonialDots.forEach(dot => {
+    dot.classList.remove('active');
+  });
+  
+  // Show current testimonial
+  testimonialSlides[currentTestimonialIndex].classList.add('active');
+  testimonialDots[currentTestimonialIndex].classList.add('active');
+}
+
+function changeTestimonial(direction) {
+  showTestimonial(currentTestimonialIndex + direction);
+}
+
+function currentTestimonial(index) {
+  showTestimonial(index);
+}
+
+// Auto-advance testimonials every 5 seconds
+setInterval(() => {
+  changeTestimonial(1);
+}, 5000);
+
+// Initialize first testimonial
+if (testimonialSlides.length > 0) {
+  showTestimonial(0);
+}
+
+// =====================================================
+// SERVICE CATEGORY TOGGLE FUNCTIONALITY
+// =====================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+  const categoryBtns = document.querySelectorAll('.category-btn');
+  const serviceGrids = document.querySelectorAll('.services-grid');
+  const toggleContainer = document.querySelector('.service-category-toggle');
+  
+  if (categoryBtns.length > 0 && serviceGrids.length > 0) {
+    // Handle category button clicks
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        
+        // Remove active class from all buttons
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Update toggle slider position
+        if (toggleContainer) {
+          toggleContainer.setAttribute('data-active', category);
+        }
+        
+        // Hide all service grids
+        serviceGrids.forEach(grid => {
+          grid.classList.remove('active');
+        });
+        
+        // Show the selected service grid
+        const targetGrid = document.querySelector(`.services-grid[data-category="${category}"]`);
+        if (targetGrid) {
+          setTimeout(() => {
+            targetGrid.classList.add('active');
+          }, 300);
+        }
+      });
+    });
+    
+    // Initialize: Show freelance services by default
+    const freelanceGrid = document.querySelector('.services-grid[data-category="freelance"]');
+    if (freelanceGrid && !freelanceGrid.classList.contains('active')) {
+      freelanceGrid.classList.add('active');
+    }
+  }
+});
