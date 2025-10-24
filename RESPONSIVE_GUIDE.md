@@ -8,7 +8,7 @@ Your website is now fully mobile responsive with comprehensive breakpoints and o
 ### 🖥️ Desktop (Default)
 - **Range:** 1201px and above
 - **Features:** Full desktop layout with all elements visible
-- **Grid Layouts:** 3-column services grid, horizontal team scroll
+- **Grid Layouts:** 3-column services grid, horizontal team jht
 
 ### 💻 Tablet (768px - 1200px)
 - **Range:** 769px - 1200px
